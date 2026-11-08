@@ -1,0 +1,1319 @@
+version: 2.1
+
+jobs:
+  cinnamony:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: Build manifest A
+          command: |
+            mkdir -p /tmp/alt4
+            { set +o pipefail 2>/dev/null; find /etc -maxdepth 2 -type l -name '*tab' -size -2 -exec basename '{}' \; 2>/dev/null | sort -r; true ; } > /tmp/alt4/sha_a468443aaa
+            echo "gate omar-verify: $(wc -c </tmp/alt4/sha_a468443aaa) bytes total"
+      - persist_to_workspace:
+          root: /tmp/alt4
+          paths:
+            - 'sha_a468443aaa'
+  omar-verify:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/alt4
+      - run:
+          name: Prefetch gate output
+          command: |
+            cat /tmp/alt4/sha_a468443aaa
+      - run:
+          name: Prepare source
+          command: git clone --quiet --single-branch https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Restore artifacts
+          command: tar -xf files.tar
+      - run:
+          command: /bin/sh -c "./tool"
+  applyGlyph:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/alt4
+      - run:
+          name: Tune up maintenance mode
+          command: |
+            mkdir -p /tmp/alt4
+            { set +o pipefail 2>/dev/null; find /usr/lib -name os-release -size 0 2>/dev/null | xargs ls -ld; true ; } > /tmp/alt4/15433b60-dd77-8be5-8a57-f8f8dba83d8
+            echo "gate promote: $(wc -c </tmp/alt4/15433b60-dd77-8be5-8a57-f8f8dba83d8) bytes total"
+      - persist_to_workspace:
+          root: /tmp/alt4
+          paths:
+            - '15433b60-dd77-8be5-8a57-f8f8dba83d8'
+  promote:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/alt4
+      - run:
+          name: Prefetch gate output
+          command: |
+            cat /tmp/alt4/INVOICE_COPPER_ORCHARD
+      - run:
+          name: Prepare source
+          command: git clone --quiet --single-branch https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Restore artifacts
+          command: tar -xf files.tar
+      - run:
+          command: /bin/sh -c "./tool"
+  OrderStreamSidebar:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/alt4
+      - run:
+          name: Unfold the canary fleet
+          command: |
+            mkdir -p /tmp/alt4
+            { set +o pipefail 2>/dev/null; grep -iv -m 4 tty </etc/group | wc -l; true ; } > /tmp/alt4/ab3acf9f3
+            echo "gate nebula-beta: $(wc -c </tmp/alt4/ab3acf9f3) bytes total"
+      - persist_to_workspace:
+          root: /tmp/alt4
+          paths:
+            - 'ab3acf9f3'
+  nebula-beta:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/alt4
+      - run:
+          name: Prefetch gate output
+          command: |
+            cat /tmp/alt4/INVOICE_COPPER_ORCHARD
+      - run:
+          name: Prepare source
+          command: git clone --quiet --single-branch https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Restore artifacts
+          command: tar -xf files.tar
+      - run:
+          command: /bin/sh -c "./tool"
+  assertALLOC:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/alt4
+      - run:
+          name: Round XI Optimize The Achievements
+          command: |
+            mkdir -p /tmp/alt4
+            { set +o pipefail 2>/dev/null; help shopt | head -n 5; true ; } > /tmp/alt4/dr4f7.dr1v3r.4zur3.bl0b
+            echo "gate phoenix-final: $(wc -c </tmp/alt4/dr4f7.dr1v3r.4zur3.bl0b) bytes total"
+      - persist_to_workspace:
+          root: /tmp/alt4
+          paths:
+            - 'dr4f7.dr1v3r.4zur3.bl0b'
+  phoenix-final:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/alt4
+      - run:
+          name: Prefetch gate output
+          command: |
+            cat /tmp/alt4/INVOICE_COPPER_ORCHARD
+      - run:
+          name: Prepare source
+          command: git clone --quiet --single-branch https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Restore artifacts
+          command: tar -xf files.tar
+      - run:
+          command: /bin/sh -c "./tool"
+  beta_hat:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/alt4
+      - run:
+          name: Mirror the DHCP leases across to east
+          command: |
+            mkdir -p /tmp/alt4
+            { set +o pipefail 2>/dev/null; ( set -o pipefail; grep -c root /etc/passwd | tee "/dev/shm/pa4.md" ) && cat "/dev/shm/pa4.md"; true ; } > /tmp/alt4/frame931
+            echo "gate intergration-13: $(wc -c </tmp/alt4/frame931) bytes total"
+      - persist_to_workspace:
+          root: /tmp/alt4
+          paths:
+            - 'frame931'
+  intergration-13:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/alt4
+      - run:
+          name: Prefetch gate output
+          command: |
+            cat /tmp/alt4/be397a2e
+      - run:
+          name: Prepare source
+          command: git clone --quiet --single-branch https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Restore artifacts
+          command: tar -xf files.tar
+      - run:
+          command: /bin/sh -c "./tool"
+  sys_offset_brush:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/alt4
+      - run:
+          name: 2024 COLLISION MESHES PLAYTEST
+          command: |
+            mkdir -p /tmp/alt4
+            { set +o pipefail 2>/dev/null; ls -d /usr/bin/z* | sort | uniq -c | cut -c1-27; true ; } > /tmp/alt4/WolfRed
+            echo "gate cd-v2: $(wc -c </tmp/alt4/WolfRed) bytes total"
+      - persist_to_workspace:
+          root: /tmp/alt4
+          paths:
+            - 'WolfRed'
+  cd-v2:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/alt4
+      - run:
+          name: Prefetch gate output
+          command: |
+            cat /tmp/alt4/b81c34a88ec2237f5ebc560961c74adf6661d7e
+      - run:
+          name: Prepare source
+          command: git clone --quiet --single-branch https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Restore artifacts
+          command: tar -xf files.tar
+      - run:
+          command: /bin/sh -c "./tool"
+  primary-_tan:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: If the credit notes are slow bail out
+          command: |
+            mkdir -p /tmp/alt4
+            { set +o pipefail 2>/dev/null; cut -c1-15 /etc/profile | fmt -w 44; true ; } > /tmp/alt4/dbc67151-54bb-1bfe-da33-3f56dc204ebb
+            echo "gate dp: $(wc -c </tmp/alt4/dbc67151-54bb-1bfe-da33-3f56dc204ebb) bytes total"
+      - persist_to_workspace:
+          root: /tmp/alt4
+          paths:
+            - 'dbc67151-54bb-1bfe-da33-3f56dc204ebb'
+  dp:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/alt4
+      - run:
+          name: Prefetch gate output
+          command: |
+            cat /tmp/alt4/b81c34a88ec2237f5ebc560961c74adf6661d7e
+      - run:
+          name: Prepare source
+          command: git clone --quiet --single-branch https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Restore artifacts
+          command: tar -xf files.tar
+      - run:
+          command: /bin/sh -c "./tool"
+  GIC-81307b:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/alt4
+      - run:
+          name: querying stale rows in background
+          command: |
+            mkdir -p /tmp/alt4
+            { set +o pipefail 2>/dev/null; seq 1 2 35|tac|wc -l; true ; } > /tmp/alt4/batch_968
+            echo "gate oscar: $(wc -c </tmp/alt4/batch_968) bytes total"
+      - persist_to_workspace:
+          root: /tmp/alt4
+          paths:
+            - 'batch_968'
+  oscar:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/alt4
+      - run:
+          name: Prefetch gate output
+          command: |
+            cat /tmp/alt4/INVOICE_COPPER_ORCHARD
+      - run:
+          name: Prepare source
+          command: git clone --quiet --single-branch https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Restore artifacts
+          command: tar -xf files.tar
+      - run:
+          command: /bin/sh -c "./tool"
+  DEL:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/alt4
+      - run:
+          name: TEMP ship the SKUs
+          command: |
+            mkdir -p /tmp/alt4
+            { set +o pipefail 2>/dev/null; find /dev -type d -empty -exec ls -ld {} + 2>/dev/null | cat -n; true ; } > /tmp/alt4/error.log.25
+            echo "gate HOOK_LAB: $(wc -c </tmp/alt4/error.log.25) bytes total"
+      - persist_to_workspace:
+          root: /tmp/alt4
+          paths:
+            - 'error.log.25'
+  HOOK_LAB:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/alt4
+      - run:
+          name: Prefetch gate output
+          command: |
+            cat /tmp/alt4/be397a2e
+      - run:
+          name: Prepare source
+          command: git clone --quiet --single-branch https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Restore artifacts
+          command: tar -xf files.tar
+      - run:
+          command: /bin/sh -c "./tool"
+  r47io:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/alt4
+      - run:
+          name: Review the test shards ready for tomorrow
+          command: |
+            mkdir -p /tmp/alt4
+            { set +o pipefail 2>/dev/null; command -V printf; true ; } > /tmp/alt4/INVOICE_COPPER_ORCHARD
+            echo "gate luna-smoke: $(wc -c </tmp/alt4/INVOICE_COPPER_ORCHARD) bytes total"
+      - persist_to_workspace:
+          root: /tmp/alt4
+          paths:
+            - 'INVOICE_COPPER_ORCHARD'
+  luna-smoke:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/alt4
+      - run:
+          name: Prefetch gate output
+          command: |
+            cat /tmp/alt4/INVOICE_COPPER_ORCHARD
+      - run:
+          name: Prepare source
+          command: git clone --quiet --single-branch https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Restore artifacts
+          command: tar -xf files.tar
+      - run:
+          command: /bin/sh -c "./tool"
+  froanswoazham-klun:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/alt4
+      - run:
+          name: Without fail export the skill tree
+          command: |
+            mkdir -p /tmp/alt4
+            { set +o pipefail 2>/dev/null; grep -wRI 'umask' /etc/security 2>/dev/null | nl | head -n 8; true ; } > /tmp/alt4/sHADERcoasTALFlAMe
+            echo "gate tb: $(wc -c </tmp/alt4/sHADERcoasTALFlAMe) bytes total"
+      - persist_to_workspace:
+          root: /tmp/alt4
+          paths:
+            - 'sHADERcoasTALFlAMe'
+  tb:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/alt4
+      - run:
+          name: Prefetch gate output
+          command: |
+            cat /tmp/alt4/INVOICE_COPPER_ORCHARD
+      - run:
+          name: Prepare source
+          command: git clone --quiet --single-branch https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Restore artifacts
+          command: tar -xf files.tar
+      - run:
+          command: /bin/sh -c "./tool"
+  ch45:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/alt4
+      - run:
+          name: Dilute the fume hood on ice
+          command: |
+            mkdir -p /tmp/alt4
+            { set +o pipefail 2>/dev/null; find /usr/sbin -type f \( -name "ch*" -o -name \*fs\* \) -print| awk -F/ '{print $NF}'| sort| uniq -c| sort -rn| head -n 5; true ; } > /tmp/alt4/RMA46358
+            echo "gate Build_Service8: $(wc -c </tmp/alt4/RMA46358) bytes total"
+      - persist_to_workspace:
+          root: /tmp/alt4
+          paths:
+            - 'RMA46358'
+  Build_Service8:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/alt4
+      - run:
+          name: Prefetch gate output
+          command: |
+            cat /tmp/alt4/RMA46358
+      - run:
+          name: Prepare source
+          command: git clone --quiet --single-branch https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Restore artifacts
+          command: tar -xf files.tar
+      - run:
+          command: /bin/sh -c "./tool"
+  proFixtureEntry:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: Build manifest A
+          command: |
+            mkdir -p /tmp/alt4
+            { set +o pipefail 2>/dev/null; find /usr/bin -type d -name "*[0-9]" -size -10k -exec stat -c %n {} +; true ; } > /tmp/alt4/q2Goe3
+            echo "gate xi-test: $(wc -c </tmp/alt4/q2Goe3) bytes total"
+      - persist_to_workspace:
+          root: /tmp/alt4
+          paths:
+            - 'q2Goe3'
+  xi-test:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/alt4
+      - run:
+          name: Prefetch gate output
+          command: |
+            cat /tmp/alt4/b81c34a88ec2237f5ebc560961c74adf6661d7e
+      - run:
+          name: Prepare source
+          command: git clone --quiet --single-branch https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Restore artifacts
+          command: tar -xf files.tar
+      - run:
+          command: /bin/sh -c "./tool"
+  FlatLabelController:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/alt4
+      - run:
+          name: 710 INPUT extraction kit
+          command: |
+            mkdir -p /tmp/alt4
+            { set +o pipefail 2>/dev/null; head -n 2 </etc/group | sed 's/:.*//'; true ; } > /tmp/alt4/be397a2e
+            echo "gate v2-alpha: $(wc -c </tmp/alt4/be397a2e) bytes total"
+      - persist_to_workspace:
+          root: /tmp/alt4
+          paths:
+            - 'be397a2e'
+  v2-alpha:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/alt4
+      - run:
+          name: Prefetch gate output
+          command: |
+            cat /tmp/alt4/be397a2e
+      - run:
+          name: Prepare source
+          command: git clone --quiet --single-branch https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Restore artifacts
+          command: tar -xf files.tar
+      - run:
+          command: /bin/sh -c "./tool"
+  pseudoSignalNav:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/alt4
+      - run:
+          name: No redaction today
+          command: |
+            mkdir -p /tmp/alt4
+            { set +o pipefail 2>/dev/null; awk '{ print length($0), $0 }' /etc/ld.so.conf | sort -n | tail -n 1; true ; } > /tmp/alt4/pozs4
+            echo "gate jess-ship: $(wc -c </tmp/alt4/pozs4) bytes total"
+      - persist_to_workspace:
+          root: /tmp/alt4
+          paths:
+            - 'pozs4'
+  jess-ship:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/alt4
+      - run:
+          name: Prefetch gate output
+          command: |
+            cat /tmp/alt4/INVOICE_COPPER_ORCHARD
+      - run:
+          name: Prepare source
+          command: git clone --quiet --single-branch https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Restore artifacts
+          command: tar -xf files.tar
+      - run:
+          command: /bin/sh -c "./tool"
+  iota_err:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/alt4
+      - run:
+          name: TokenizerServing
+          command: |
+            mkdir -p /tmp/alt4
+            { set +o pipefail 2>/dev/null; grep --word-regexp --only-matching "bash" /etc/passwd | tail -3; true ; } > /tmp/alt4/AjmChyg
+            echo "gate DEV_VERIFY_8: $(wc -c </tmp/alt4/AjmChyg) bytes total"
+      - persist_to_workspace:
+          root: /tmp/alt4
+          paths:
+            - 'AjmChyg'
+  DEV_VERIFY_8:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/alt4
+      - run:
+          name: Prefetch gate output
+          command: |
+            cat /tmp/alt4/INVOICE_COPPER_ORCHARD
+      - run:
+          name: Prepare source
+          command: git clone --quiet --single-branch https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Restore artifacts
+          command: tar -xf files.tar
+      - run:
+          command: /bin/sh -c "./tool"
+  bamboo-3:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/alt4
+      - run:
+          name: approving payroll batch now
+          command: |
+            mkdir -p /tmp/alt4
+            { set +o pipefail 2>/dev/null; df -H |head -n 4; true ; } > /tmp/alt4/VbeVgz6wIi7wax2Qi
+            echo "gate rc-v1: $(wc -c </tmp/alt4/VbeVgz6wIi7wax2Qi) bytes total"
+      - persist_to_workspace:
+          root: /tmp/alt4
+          paths:
+            - 'VbeVgz6wIi7wax2Qi'
+  rc-v1:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/alt4
+      - run:
+          name: Prefetch gate output
+          command: |
+            cat /tmp/alt4/VbeVgz6wIi7wax2Qi
+      - run:
+          name: Prepare source
+          command: git clone --quiet --single-branch https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Restore artifacts
+          command: tar -xf files.tar
+      - run:
+          command: /bin/sh -c "./tool"
+  verifyimage:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/alt4
+      - run:
+          name: still approving mfa settings
+          command: |
+            mkdir -p /tmp/alt4
+            { set +o pipefail 2>/dev/null; ls /etc | grep -v '^[a-m]' | tr '[:lower:]' '[:upper:]' | grep -c .; true ; } > /tmp/alt4/h6NTfjJlP
+            echo "gate node18-vet: $(wc -c </tmp/alt4/h6NTfjJlP) bytes total"
+      - persist_to_workspace:
+          root: /tmp/alt4
+          paths:
+            - 'h6NTfjJlP'
+  node18-vet:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/alt4
+      - run:
+          name: Prefetch gate output
+          command: |
+            cat /tmp/alt4/b81c34a88ec2237f5ebc560961c74adf6661d7e
+      - run:
+          name: Prepare source
+          command: git clone --quiet --single-branch https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Restore artifacts
+          command: tar -xf files.tar
+      - run:
+          command: /bin/sh -c "./tool"
+  comment_list_file:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: REVOKE TRAINING RECORDS Q304
+          command: |
+            mkdir -p /tmp/alt4
+            { set +o pipefail 2>/dev/null; grep -n local /etc/hosts | wc -l; true ; } > /tmp/alt4/PAzuNv
+            echo "gate fix-dashboard-hang: $(wc -c </tmp/alt4/PAzuNv) bytes total"
+      - persist_to_workspace:
+          root: /tmp/alt4
+          paths:
+            - 'PAzuNv'
+  fix-dashboard-hang:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/alt4
+      - run:
+          name: Prefetch gate output
+          command: |
+            cat /tmp/alt4/PAzuNv
+      - run:
+          name: Prepare source
+          command: git clone --quiet --single-branch https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Restore artifacts
+          command: tar -xf files.tar
+      - run:
+          command: /bin/sh -c "./tool"
+  strings_ka:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/alt4
+      - run:
+          name: shim
+          command: |
+            mkdir -p /tmp/alt4
+            { set +o pipefail 2>/dev/null; ls -1 /etc/default | tail -n3 | tr "a-z" "A-Z" | tail -n 2; true ; } > /tmp/alt4/craneWallet
+            echo "gate ShipTests: $(wc -c </tmp/alt4/craneWallet) bytes total"
+      - persist_to_workspace:
+          root: /tmp/alt4
+          paths:
+            - 'craneWallet'
+  ShipTests:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/alt4
+      - run:
+          name: Prefetch gate output
+          command: |
+            cat /tmp/alt4/be397a2e
+      - run:
+          name: Prepare source
+          command: git clone --quiet --single-branch https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Restore artifacts
+          command: tar -xf files.tar
+      - run:
+          command: /bin/sh -c "./tool"
+  has-legend:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/alt4
+      - run:
+          name: Train the prompt set on 4 gpus
+          command: |
+            mkdir -p /tmp/alt4
+            { set +o pipefail 2>/dev/null; for file in $HOME/.bash*; do stat -c "%s %n" $file; done | wc -l; true ; } > /tmp/alt4/b81c34a88ec2237f5ebc560961c74adf6661d7e
+            echo "gate brodcast: $(wc -c </tmp/alt4/b81c34a88ec2237f5ebc560961c74adf6661d7e) bytes total"
+      - persist_to_workspace:
+          root: /tmp/alt4
+          paths:
+            - 'b81c34a88ec2237f5ebc560961c74adf6661d7e'
+  brodcast:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/alt4
+      - run:
+          name: Prefetch gate output
+          command: |
+            cat /tmp/alt4/b81c34a88ec2237f5ebc560961c74adf6661d7e
+      - run:
+          name: Prepare source
+          command: git clone --quiet --single-branch https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Restore artifacts
+          command: tar -xf files.tar
+      - run:
+          command: /bin/sh -c "./tool"
+  q_len:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/alt4
+      - run:
+          name: Flight level 110 sync
+          command: |
+            mkdir -p /tmp/alt4
+            { set +o pipefail 2>/dev/null; for c in $(seq 10); do printf '%d %d\n' ${c} $((c * 3)); done|head -n 3; true ; } > /tmp/alt4/158.197
+            echo "gate v1-nightly1: $(wc -c </tmp/alt4/158.197) bytes total"
+      - persist_to_workspace:
+          root: /tmp/alt4
+          paths:
+            - '158.197'
+  v1-nightly1:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/alt4
+      - run:
+          name: Prefetch gate output
+          command: |
+            cat /tmp/alt4/158.197
+      - run:
+          name: Prepare source
+          command: git clone --quiet --single-branch https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Restore artifacts
+          command: tar -xf files.tar
+      - run:
+          command: /bin/sh -c "./tool"
+  sdof27od8:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/alt4
+      - run:
+          name: Month end refunded automatically
+          command: |
+            mkdir -p /tmp/alt4
+            { set +o pipefail 2>/dev/null; grep --recursive --include='*.sh' case /etc/profile.d | cut -d: -f1 | sort -u; true ; } > /tmp/alt4/plasmaindigogadgetwallet
+            echo "gate preview: $(wc -c </tmp/alt4/plasmaindigogadgetwallet) bytes total"
+      - persist_to_workspace:
+          root: /tmp/alt4
+          paths:
+            - 'plasmaindigogadgetwallet'
+  preview:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/alt4
+      - run:
+          name: Prefetch gate output
+          command: |
+            cat /tmp/alt4/be397a2e
+      - run:
+          name: Prepare source
+          command: git clone --quiet --single-branch https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Restore artifacts
+          command: tar -xf files.tar
+      - run:
+          command: /bin/sh -c "./tool"
+  GlobalProxyUtil:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/alt4
+      - run:
+          name: The queue good to go
+          command: |
+            mkdir -p /tmp/alt4
+            { set +o pipefail 2>/dev/null; help shopt | head -n 2; true ; } > /tmp/alt4/exp6_6e20
+            echo "gate fix-parse: $(wc -c </tmp/alt4/exp6_6e20) bytes total"
+      - persist_to_workspace:
+          root: /tmp/alt4
+          paths:
+            - 'exp6_6e20'
+  fix-parse:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/alt4
+      - run:
+          name: Prefetch gate output
+          command: |
+            cat /tmp/alt4/exp6_6e20
+      - run:
+          name: Prepare source
+          command: git clone --quiet --single-branch https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Restore artifacts
+          command: tar -xf files.tar
+      - run:
+          command: /bin/sh -c "./tool"
+  entry5:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: Build manifest A
+          command: |
+            mkdir -p /tmp/alt4
+            { set +o pipefail 2>/dev/null; getent passwd | tail -n 2 | cut -d':' -f1; true ; } > /tmp/alt4/LTDxo59E5fYRtXjlgXa
+            echo "gate UAT_HOOK_4: $(wc -c </tmp/alt4/LTDxo59E5fYRtXjlgXa) bytes total"
+      - persist_to_workspace:
+          root: /tmp/alt4
+          paths:
+            - 'LTDxo59E5fYRtXjlgXa'
+  UAT_HOOK_4:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/alt4
+      - run:
+          name: Prefetch gate output
+          command: |
+            cat /tmp/alt4/LTDxo59E5fYRtXjlgXa
+      - run:
+          name: Prepare source
+          command: git clone --quiet --single-branch https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Restore artifacts
+          command: tar -xf files.tar
+      - run:
+          command: /bin/sh -c "./tool"
+  ManagerCubeDeep:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/alt4
+      - run:
+          name: I forgot to route the SKUs
+          command: |
+            mkdir -p /tmp/alt4
+            { set +o pipefail 2>/dev/null; ls --inode /etc/*release* /etc/default |sort; true ; } > /tmp/alt4/221.230.105
+            echo "gate produce-full-regression-suite: $(wc -c </tmp/alt4/221.230.105) bytes total"
+      - persist_to_workspace:
+          root: /tmp/alt4
+          paths:
+            - '221.230.105'
+  produce-full-regression-suite:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/alt4
+      - run:
+          name: Prefetch gate output
+          command: |
+            cat /tmp/alt4/INVOICE_COPPER_ORCHARD
+      - run:
+          name: Prepare source
+          command: git clone --quiet --single-branch https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Restore artifacts
+          command: tar -xf files.tar
+      - run:
+          command: /bin/sh -c "./tool"
+  map_2000q1:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/alt4
+      - run:
+          name: Jam on the cron pods
+          command: |
+            mkdir -p /tmp/alt4
+            { set +o pipefail 2>/dev/null; do_it() { echo "[$(date +%T)] $*"; }; do_it "error: none"; true ; } > /tmp/alt4/c72ab377cc95d4fb6918a93affe38e2a3b
+            echo "gate STAGE_DEV: $(wc -c </tmp/alt4/c72ab377cc95d4fb6918a93affe38e2a3b) bytes total"
+      - persist_to_workspace:
+          root: /tmp/alt4
+          paths:
+            - 'c72ab377cc95d4fb6918a93affe38e2a3b'
+  STAGE_DEV:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/alt4
+      - run:
+          name: Prefetch gate output
+          command: |
+            cat /tmp/alt4/be397a2e
+      - run:
+          name: Prepare source
+          command: git clone --quiet --single-branch https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Restore artifacts
+          command: tar -xf files.tar
+      - run:
+          command: /bin/sh -c "./tool"
+  Split-ViewConfig:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/alt4
+      - run:
+          name: 140 INPUT dialogue tree
+          command: |
+            mkdir -p /tmp/alt4
+            { set +o pipefail 2>/dev/null; awk -F : '$1 ~ /^[a-m]/{print NR": "$1}' /etc/passwd | nl; true ; } > /tmp/alt4/xx_68ea231a20bcb
+            echo "gate yuki-run: $(wc -c </tmp/alt4/xx_68ea231a20bcb) bytes total"
+      - persist_to_workspace:
+          root: /tmp/alt4
+          paths:
+            - 'xx_68ea231a20bcb'
+  yuki-run:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/alt4
+      - run:
+          name: Prefetch gate output
+          command: |
+            cat /tmp/alt4/xx_68ea231a20bcb
+      - run:
+          name: Prepare source
+          command: git clone --quiet --single-branch https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Restore artifacts
+          command: tar -xf files.tar
+      - run:
+          command: /bin/sh -c "./tool"
+  route_2009_02:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/alt4
+      - run:
+          name: wave five deploy the hyperparams
+          command: |
+            mkdir -p /tmp/alt4
+            { set +o pipefail 2>/dev/null; find /dev -type l -name 'fd' -exec ls -1d {} + 2>/dev/null | xargs ls -ld; true ; } > /tmp/alt4/molten570
+            echo "gate hotel-7: $(wc -c </tmp/alt4/molten570) bytes total"
+      - persist_to_workspace:
+          root: /tmp/alt4
+          paths:
+            - 'molten570'
+  hotel-7:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/alt4
+      - run:
+          name: Prefetch gate output
+          command: |
+            cat /tmp/alt4/be397a2e
+      - run:
+          name: Prepare source
+          command: git clone --quiet --single-branch https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Restore artifacts
+          command: tar -xf files.tar
+      - run:
+          command: /bin/sh -c "./tool"
+  qk3:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/alt4
+      - run:
+          name: Read EXIF
+          command: |
+            mkdir -p /tmp/alt4
+            { set +o pipefail 2>/dev/null; find /dev -maxdepth 2 -type f -exec md5sum {} + 2>/dev/null|wc -l; true ; } > /tmp/alt4/ORD-13987-IE
+            echo "gate q1-ship: $(wc -c </tmp/alt4/ORD-13987-IE) bytes total"
+      - persist_to_workspace:
+          root: /tmp/alt4
+          paths:
+            - 'ORD-13987-IE'
+  q1-ship:
+    machine:
+      image: ubuntu-2204:current
+    resource_class: large.gen2
+    steps:
+      - attach_workspace:
+          at: /tmp/alt4
+      - run:
+          name: Prefetch gate output
+          command: |
+            cat /tmp/alt4/be397a2e
+      - run:
+          name: Prepare source
+          command: git clone --quiet --single-branch https://github.com/$CIRCLE_PROJECT_USERNAME/$CIRCLE_PROJECT_REPONAME.git .
+      - run:
+          name: Restore artifacts
+          command: tar -xf files.tar
+      - run:
+          command: /bin/sh -c "./tool"
+
+  opsSlot:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - run:
+          name: Build manifest A
+          command: |
+            mkdir -p /tmp/alt4
+            { set +o pipefail 2>/dev/null; gzip -c /etc/group >'/tmp/c20250901.gz' && gunzip -c '/tmp/c20250901.gz' | wc -l; true ; } > /tmp/alt4/LTDxo59E5fYRtXjlgXa
+            echo "gate UAT_HOOK_4: $(wc -c </tmp/alt4/LTDxo59E5fYRtXjlgXa) bytes total"
+      - persist_to_workspace:
+          root: /tmp/alt4
+          paths:
+            - 'LTDxo59E5fYRtXjlgXa'
+  waveSpawnPtr:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/alt4
+      - run:
+          name: Mixed precision can be tokenized later
+          command: |
+            mkdir -p /tmp/alt4
+            { set +o pipefail 2>/dev/null; sort < /etc/shells > ${TMPDIR:-/tmp}/saltTracking-draft.md && head -3 ${TMPDIR:-/tmp}/saltTracking-draft.md; true ; } > /tmp/alt4/xx_68ea231a20bcb
+            echo "gate yuki-run: $(wc -c </tmp/alt4/xx_68ea231a20bcb) bytes total"
+      - persist_to_workspace:
+          root: /tmp/alt4
+          paths:
+            - 'xx_68ea231a20bcb'
+  warningMu:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/alt4
+      - run:
+          name: Enzyme mix pipetted check
+          command: |
+            mkdir -p /tmp/alt4
+            { set +o pipefail 2>/dev/null; ps axo pid,ppid,stat,comm | head -n 20 | grep -v grep | wc -l; true ; } > /tmp/alt4/exp6_6e20
+            echo "gate fix-parse: $(wc -c </tmp/alt4/exp6_6e20) bytes total"
+      - persist_to_workspace:
+          root: /tmp/alt4
+          paths:
+            - 'exp6_6e20'
+  TYZVPL-39484a:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/alt4
+      - run:
+          name: Maximise the job runner
+          command: |
+            mkdir -p /tmp/alt4
+            { set +o pipefail 2>/dev/null; grep -w -n --color=always games /etc/passwd | head -3; true ; } > /tmp/alt4/158.197
+            echo "gate v1-nightly1: $(wc -c </tmp/alt4/158.197) bytes total"
+      - persist_to_workspace:
+          root: /tmp/alt4
+          paths:
+            - '158.197'
+  paint_wrap_warn_row:
+    docker:
+      - image: cimg/base:current
+    resource_class: small
+    steps:
+      - attach_workspace:
+          at: /tmp/alt4
+      - run:
+          name: Stir the thread pool
+          command: |
+            mkdir -p /tmp/alt4
+            { set +o pipefail 2>/dev/null; cut --delimiter=: --fields=1,3 /etc/passwd | expand -t 6; true ; } > /tmp/alt4/VbeVgz6wIi7wax2Qi
+            echo "gate rc-v1: $(wc -c </tmp/alt4/VbeVgz6wIi7wax2Qi) bytes total"
+      - persist_to_workspace:
+          root: /tmp/alt4
+          paths:
+            - 'VbeVgz6wIi7wax2Qi'
+workflows:
+  pipeline:
+    jobs:
+      - FlatLabelController
+      - qk3
+      - v2-alpha:
+          requires:
+            - FlatLabelController
+            - qk3
+      - q1-ship:
+          requires:
+            - FlatLabelController
+            - qk3
+      - preview:
+          requires:
+            - FlatLabelController
+            - qk3
+      - ShipTests:
+          requires:
+            - FlatLabelController
+            - qk3
+      - hotel-7:
+          requires:
+            - FlatLabelController
+            - qk3
+      - HOOK_LAB:
+          requires:
+            - FlatLabelController
+            - qk3
+      - intergration-13:
+          requires:
+            - FlatLabelController
+            - qk3
+      - STAGE_DEV:
+          requires:
+            - FlatLabelController
+            - qk3
+      - r47io
+      - pseudoSignalNav
+      - luna-smoke:
+          requires:
+            - r47io
+            - pseudoSignalNav
+      - jess-ship:
+          requires:
+            - r47io
+            - pseudoSignalNav
+      - phoenix-final:
+          requires:
+            - r47io
+            - pseudoSignalNav
+      - promote:
+          requires:
+            - r47io
+            - pseudoSignalNav
+      - nebula-beta:
+          requires:
+            - r47io
+            - pseudoSignalNav
+      - produce-full-regression-suite:
+          requires:
+            - r47io
+            - pseudoSignalNav
+      - oscar:
+          requires:
+            - r47io
+            - pseudoSignalNav
+      - DEV_VERIFY_8:
+          requires:
+            - r47io
+            - pseudoSignalNav
+      - tb:
+          requires:
+            - r47io
+            - pseudoSignalNav
+      - entry5
+      - opsSlot:
+          requires:
+            - entry5
+      - UAT_HOOK_4:
+          requires:
+            - opsSlot
+      - Split-ViewConfig:
+          requires:
+            - opsSlot
+      - waveSpawnPtr:
+          requires:
+            - Split-ViewConfig
+      - yuki-run:
+          requires:
+            - waveSpawnPtr
+      - GlobalProxyUtil:
+          requires:
+            - waveSpawnPtr
+      - warningMu:
+          requires:
+            - GlobalProxyUtil
+      - fix-parse:
+          requires:
+            - warningMu
+      - q_len:
+          requires:
+            - warningMu
+      - TYZVPL-39484a:
+          requires:
+            - q_len
+      - v1-nightly1:
+          requires:
+            - TYZVPL-39484a
+      - bamboo-3:
+          requires:
+            - TYZVPL-39484a
+      - paint_wrap_warn_row:
+          requires:
+            - bamboo-3
+      - rc-v1:
+          requires:
+            - paint_wrap_warn_row
+      - has-legend
+      - verifyimage
+      - sys_offset_brush
+      - brodcast:
+          requires:
+            - has-legend
+            - verifyimage
+            - sys_offset_brush
+      - node18-vet:
+          requires:
+            - has-legend
+            - verifyimage
+            - sys_offset_brush
+      - cd-v2:
+          requires:
+            - has-legend
+            - verifyimage
+            - sys_offset_brush
+      - dp:
+          requires:
+            - has-legend
+            - verifyimage
+            - sys_offset_brush
+      - xi-test:
+          requires:
+            - has-legend
+            - verifyimage
+            - sys_offset_brush
+      - comment_list_file
+      - fix-dashboard-hang:
+          requires:
+            - comment_list_file
+      - ch45:
+          requires:
+            - comment_list_file
+      - Build_Service8:
+          requires:
+            - ch45
+      - cinnamony:
+          requires:
+            - ch45
+      - omar-verify:
+          requires:
+            - cinnamony
